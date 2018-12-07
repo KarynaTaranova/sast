@@ -1,8 +1,7 @@
 # SASTY 
 *Combination of tools for SAST Scanning*
 
-[![](https://dockerbuildbadges.quelltext.eu/status.svg?organization=getcarrier&repository=sast)]
-(https://hub.docker.com/r/getcarrier/sast/builds/)
+[![](https://dockerbuildbadges.quelltext.eu/status.svg?organization=getcarrier&repository=sast)](https://hub.docker.com/r/getcarrier/sast/builds/)
 
 ### Quick and easy start
 These simple steps will run blind SAST scan against your code and generate html and xml report with some low hanging fruits
