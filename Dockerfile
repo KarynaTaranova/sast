@@ -4,11 +4,12 @@ MAINTAINER artem_rozumenko@epam.com
 
 ARG RUBY_VERSION=2.3.0-dev
 ARG BANDIT_VERSION=1.5.1
+ARG SPOTBUGS_VERSION=3.1.9
 
 RUN apt-get -qq update && apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:jonathonf/python-3.6 && apt-get -qq update
 RUN apt-get -qq install -y --no-install-recommends default-jre default-jdk xvfb wget ca-certificates git gcc make \
-            build-essential libssl-dev zlib1g-dev libbz2-dev libpcap-dev \
+            build-essential libssl-dev zlib1g-dev libbz2-dev libpcap-dev unzip \
             libreadline-dev libsqlite3-dev curl llvm libncurses5-dev libncursesw5-dev \
             xz-utils tk-dev libffi-dev liblzma-dev perl libnet-ssleay-perl python-dev python-pip \
             libxslt1-dev libxml2-dev libyaml-dev openssh-server  python-lxml wget \
@@ -32,6 +33,16 @@ RUN pip3 --version
 
 # Install pybandit (Python SAST tool)
 RUN pip3 install bandit==${BANDIT_VERSION}
+
+# Install Spotbugs
+WORKDIR /opt
+
+RUN curl -LOJ http://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/${SPOTBUGS_VERSION}/spotbugs-${SPOTBUGS_VERSION}.zip
+RUN unzip spotbugs-${SPOTBUGS_VERSION}.zip
+RUN rm -rf spotbugs-${SPOTBUGS_VERSION}.zip
+
+ENV PATH $PATH:/opt/spotbugs-${SPOTBUGS_VERSION}/bin
+
 
 # Installing ruby
 RUN cd tmp && \
