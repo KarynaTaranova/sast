@@ -45,7 +45,7 @@ ENV PATH $PATH:/opt/spotbugs-${SPOTBUGS_VERSION}/bin
 
 
 # Installing ruby
-RUN cd tmp && \
+RUN cd /tmp && \
     apt-get install -y  --no-install-recommends autoconf bison build-essential libssl-dev libyaml-dev \
                         libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev \
                         rbenv ruby-build
