@@ -43,6 +43,8 @@ RUN rm -rf spotbugs-${SPOTBUGS_VERSION}.zip
 
 ENV PATH $PATH:/opt/spotbugs-${SPOTBUGS_VERSION}/bin
 
+# Install NodeJsScan
+RUN pip3.6 install nodejsscan
 
 # Installing ruby
 RUN cd /tmp && \
