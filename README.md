@@ -45,16 +45,13 @@ Scans can be configured using `scan-config.yaml` file.
 ```
 sast # Name of the scan
   # General configuration section
-  target_host: $host          # host to scan (e.g. my.domain.com)
-  target_port: $port          # port where it is hosted (e.g. 443)
-  protocol: $protocol         # http or https
   project_name: $project_name # the name of the project used in reports
   environment: $environment   # literal name of environment (e.g. prod/stage/etc.)
-  langugage: python             # the language of application to be scanned
   
   # Reporting configuration section (all report types are optional)
   html_report: true           # do you need an html report (true/false)
   junit_report: true          # do you need an xml report (true/false)
+  langugage: ruby             # the language of application to be scanned
   reportportal:               # ReportPortal.io specific section
     rp_host: https://rp.com   # url to ReportPortal.io deployment 
     rp_token: XXXXXXXXXXXXX   # ReportPortal authentication token
