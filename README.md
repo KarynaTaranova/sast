@@ -70,38 +70,6 @@ sast # Name of the scan
     labels: some,label        # Comaseparated list of lables for ticket
     watchers: another.dude    # Comaseparated list of Jira IDs for watchers
     jira_epic_key: XYZC-123   # Jira epic key (or id)
-    
-  # Scanners configurtion section (you can use only what you need)
-  sslyze: true                # set to `true` in order to scan for ssl errors
-  nmap:                       # nmap configuration
-    inclusions: T:0-1000      # ports to scan
-    exclusions: T:80,443      # ports expected to be discovered 
-    nse_scripts: ssl-date     # additional NSE scripts 
-    params: -v -A             # additional NMAP params
-  zap:                        # OWASP zap confutation
-    scan_types: xss           # types of vulnerabilities to scan
-  masscan:                    # masscan configuration
-    inclusions: 0-65535       # ports to scan
-    exclusions: 80,443        # ports expected to be discovered
-  nikto:                      # Nikto configuration
-    # parameters for nikto to run with
-    param: -Plugins @@ALL;-@@EXTRAS;-sitefiles;tests(report:500) -T 123x
-  w3af:                       # w3af configuration
-    # path to w3af configuraion within container
-    config_file: /tmp/w3af_full_audit.w3af
-  # Qualys WAS integration in tricky and 
-  # require couple of secrets to be prebuilt into container
-  # you will need to set QUALYS_LOGIN, QUALYS_PASSWORD and
-  # QUALYS_API_SERVER to environment variables in order to make it work  
-  qualys:
-    # Qualys scan profile
-    qualys_profile_id: SCAN_PROFILE_ID 
-    # Qualys report temaple, probably we need to store example somewhere
-    qualys_template_id: ID_OF_QUALYS_TEMPLATE 
-    # Type of a scanner to use in Qualys
-    qualys_scanner_type: INTERNAL | EXTERNAL 
-    # In case you use INTERNAL you will need:
-    qualys_scanner: NAME_OF_SCANNER  
   ptai:
     # name of html report that to create jira tickets from
     report_name: NAME_OF_REPORT
