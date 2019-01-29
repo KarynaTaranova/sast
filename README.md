@@ -7,7 +7,10 @@
 These simple steps will run blind SAST scan against your code and generate html and xml report with some low hanging fruits
 Currently we have:
 - python
+- java
+- nodejs
 - ruby
+- scala
 
 ##### 1. Install docker
  
@@ -47,7 +50,7 @@ sast # Name of the scan
   protocol: $protocol         # http or https
   project_name: $project_name # the name of the project used in reports
   environment: $environment   # literal name of environment (e.g. prod/stage/etc.)
-  langugage: ruby             # the language of application to be scanned
+  langugage: python             # the language of application to be scanned
   
   # Reporting configuration section (all report types are optional)
   html_report: true           # do you need an html report (true/false)
