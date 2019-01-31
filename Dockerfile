@@ -6,6 +6,10 @@ ARG RUBY_VERSION=2.3.0-dev
 ARG BANDIT_VERSION=1.5.1
 ARG SPOTBUGS_VERSION=3.1.9
 
+# For safety tool
+ARG LC_ALL=C.UTF-8
+ARG LANG=C.UTF-8
+
 RUN apt-get -qq update && apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:jonathonf/python-3.6 && apt-get -qq update
 RUN apt-get -qq install -y --no-install-recommends default-jre default-jdk xvfb wget ca-certificates git gcc make \
@@ -33,6 +37,9 @@ RUN pip3 --version
 
 # Install pybandit (Python SAST tool)
 RUN pip3 install bandit==${BANDIT_VERSION}
+
+# Install safety (Python SAST composition analysis tool)
+RUN pip3 install safety
 
 # Install Spotbugs
 WORKDIR /opt
