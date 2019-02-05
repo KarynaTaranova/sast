@@ -5,7 +5,7 @@ MAINTAINER artem_rozumenko@epam.com
 ARG RUBY_VERSION=2.3.0-dev
 ARG BANDIT_VERSION=1.5.1
 ARG SPOTBUGS_VERSION=3.1.9
-
+ARG OWASPDEPCHECK_VERSION=4.0.2
 # For safety tool
 ARG LC_ALL=C.UTF-8
 ARG LANG=C.UTF-8
@@ -49,6 +49,15 @@ RUN unzip spotbugs-${SPOTBUGS_VERSION}.zip
 RUN rm -rf spotbugs-${SPOTBUGS_VERSION}.zip
 
 ENV PATH $PATH:/opt/spotbugs-${SPOTBUGS_VERSION}/bin
+
+# Install OWASP Dependency Check (Java SAST composition analysis tool)
+WORKDIR /opt
+
+RUN curl -LOJ https://dl.bintray.com/jeremy-long/owasp/dependency-check-${OWASPDEPCHECK_VERSION}-release.zip
+RUN unzip dependency-check-${OWASPDEPCHECK_VERSION}-release.zip
+RUN rm -rf dependency-check-${OWASPDEPCHECK_VERSION}-release.zip
+
+ENV PATH $PATH:/opt/dependency-check/bin
 
 # Install NodeJsScan
 RUN pip3.6 install nodejsscan
