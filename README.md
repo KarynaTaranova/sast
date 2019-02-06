@@ -70,6 +70,17 @@ sast # Name of the scan
     labels: some,label        # Comaseparated list of lables for ticket
     watchers: another.dude    # Comaseparated list of Jira IDs for watchers
     jira_epic_key: XYZC-123   # Jira epic key (or id)
+  emails:
+    smtp_server: smtp.office.com    # smtp server address
+    port: 587                       # smtp server port
+    login: some_user@epam.com       # smtp user autentification
+    password: password              # smtp user password
+    receivers_email_list:           # list receivers
+            ['user1@epam.com', 'user2epam.com']  
+    subject: some text              # email subject
+    body: some text                 # email body (text or html)
+    attach_html_report: True        # add report to attachments
+    attachments: ['1.txt', '2.pdf'] # mounted to /attachments folder (optional)
   ptai:
     # name of html report that to create jira tickets from
     report_name: NAME_OF_REPORT
