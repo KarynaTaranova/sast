@@ -91,16 +91,15 @@ sast # Name of the scan
   ptai:
     # name of html report that to create jira tickets from
     report_name: NAME_OF_REPORT
-  # NodeJs composition analysis tool
-  npm:
-    devdep: true
-  # NodeJs composition analysis tool
-  retirejs:
-    devdep: true
-  # Python composition analysis tool
-  safety:
-    files: ['requirements.txt'] # relative file paths to scan, 
-                                # started from mounted code folder
+    
+  composition_analysis: true/false  # enable/disable composition analysis
+    or
+  composition_analysis:
+    devdep: true/fasle              # for nodejs projects (optional)
+      or
+    files: ['requirements.txt']     # for python projects (optional)
+                                    #   relative file paths to scan, 
+                                    #   started from mounted code folder
 ```
 configuration can be mounted to container like 
 ```

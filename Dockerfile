@@ -7,8 +7,8 @@ ARG BANDIT_VERSION=1.5.1
 ARG SPOTBUGS_VERSION=3.1.9
 
 # For safety tool
-ARG LC_ALL=C.UTF-8
-ARG LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 RUN apt-get -qq update && apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:jonathonf/python-3.6 && apt-get -qq update
