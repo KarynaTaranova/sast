@@ -5,6 +5,7 @@ MAINTAINER artem_rozumenko@epam.com
 ARG RUBY_VERSION=2.3.0-dev
 ARG BANDIT_VERSION=1.5.1
 ARG SPOTBUGS_VERSION=3.1.9
+ARG FINDSECBUGS_VERSION=1.8.0
 
 # For safety tool
 ENV LC_ALL=C.UTF-8
@@ -47,7 +48,8 @@ WORKDIR /opt
 RUN curl -LOJ http://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/${SPOTBUGS_VERSION}/spotbugs-${SPOTBUGS_VERSION}.zip
 RUN unzip spotbugs-${SPOTBUGS_VERSION}.zip
 RUN rm -rf spotbugs-${SPOTBUGS_VERSION}.zip
-
+RUN cd /opt/spotbugs-3.1.9/plugin && \
+    curl -LOJ https://search.maven.org/remotecontent?filepath=com/h3xstream/findsecbugs/findsecbugs-plugin/${FINDSECBUGS_VERSION}/findsecbugs-plugin-${FINDSECBUGS_VERSION}.jar
 ENV PATH $PATH:/opt/spotbugs-${SPOTBUGS_VERSION}/bin
 
 # Install NodeJsScan
