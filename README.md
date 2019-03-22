@@ -104,6 +104,8 @@ sast # Name of the scan
   ptai:
     # name of html report that to create jira tickets from
     report_name: NAME_OF_REPORT
+    filtered_statuses: discarded, suspected 
+                                    # separated ', '. default ['discarded', 'suspected']
     
   composition_analysis: true/false  # enable/disable composition analysis
     or
@@ -169,12 +171,26 @@ ptai # Name of the scan
     url: https://jira.com     # Url to Jira
     username: some.dude       # User to create tickets
     password: password        # password to user in Jira
-    jira_project: XYZC        # Jira project ID
-    assignee: some.dude       # Jira id of default assignee
-    issue_type: Bug           # Jira issue type (Default: Bug)
-    labels: some,label        # Comaseparated list of lables for ticket
-    watchers: another.dude    # Comaseparated list of Jira IDs for watchers
-    jira_epic_key: XYZC-123   # Jira epic key (or id) 
+    project: XYZC             # Jira project ID
+    fields:
+      assignee: some.dude       # Jira id of default assignee
+      issue_type: Bug           # Jira issue type (Default: Bug)
+      labels: some,label        # Comaseparated list of lables for ticket
+      watchers: another.dude    # Comaseparated list of Jira IDs for watchers
+      epic_link: XYZC-123   # Jira epic key (or id) 
   ptai:
     # name of html report that to create jira tickets from
     report_name: NAME_OF_REPORT
+    filtered_statuses: discarded, suspected
+```
+   
+#### Jira test
+Use next command to create test ticket.
+```
+jira_check -s {test_name}
+```
+One test jira ticker will be created using config settings.
+To delete test ticket use (use user and password to provide account that can delete tickets):
+```
+jira_check -s {test_name} -d TICKET_KEY -u user -p password
+```
