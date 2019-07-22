@@ -52,7 +52,7 @@ It is possible to specify path to config using `config_path` environment variabl
 
 ##### scan-config.yaml structure
 ```
-sast # Name of the scan
+sast: # Name of the scan
   # General configuration section
   code_path: $code_path       # path to folder with code to scan. Default - /code
   target_host: $host          # host to scan (e.g. my.domain.com)
@@ -63,7 +63,7 @@ sast # Name of the scan
   min_priority: Major         # Min priority level to process vulnerability.
                               # default - Major
                               # possible: Trivial, Minor, Major, Critical, Blocker
-  langugage: python             # the language of application to be scanned
+  language: python             # the language of application to be scanned
   
   # Reporting configuration section (all report types are optional)
   html_report: true           # do you need an html report (true/false)
@@ -166,7 +166,7 @@ Please mount folder, that contains PT AI html report, to /tmp/reports docker vol
 
 #### scan-config.yaml example
 ```
-ptai # Name of the scan
+ptai: # Name of the scan
   jira:
     url: https://jira.com     # Url to Jira
     username: some.dude       # User to create tickets
